@@ -1,0 +1,10 @@
+{
+	"name": "librelane-base-image",
+    "image": "ghcr.io/hm-aemy/librelane-base-image:latest",
+
+    "postCreateCommand": "git config --global --add safe.directory \"$(pwd)\" && git submodule update --init --recursive",
+    "runArgs": [
+        "--env=DISPLAY=host.docker.internal:0.0",
+        "--env=QT_X11_NO_MITSHM=1"
+    ]
+}
