@@ -1,8 +1,12 @@
 {
-	"name": "librelane-base-image",
-    "image": "ghcr.io/hm-aemy/librelane-base-image:latest",
+	"name": "Design your Chip 2027",
+    "image": "dyc-nix-test",
 
-    "postCreateCommand": "git config --global --add safe.directory \"$(pwd)\" && git submodule update --init --recursive",
+    "remoteUser": "ubuntu",
+    "containerUser": "root",
+    "updateRemoteUserUID": true
+
+    "postCreateCommand": "git submodule update --init --recursive",
     "runArgs": [
         "--env=DISPLAY=host.docker.internal:0.0",
         "--env=QT_X11_NO_MITSHM=1"
