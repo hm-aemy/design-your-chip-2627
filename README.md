@@ -50,7 +50,7 @@ Follow the setup guide for your operating system:
 | Operating System | Setup Guide | Status |
 |---|---|---|
 | Linux (X11 / Wayland) | [Linux Setup](docs/setup/linux.md) | Tested |
-| Windows 11 (WSL2 / WSLg) | [Windows Setup](docs/setup/windows.md) | Testing |
+| Windows 11 (WSL2 / WSLg) | [Windows Setup](docs/setup/windows.md) | Tested |
 | macOS (XQuartz) | [macOS Setup](docs/setup/macos.md) | Testing |
 
 The development environment supports both Visual Studio Code and terminal-based workflows using Dev Container CLI.

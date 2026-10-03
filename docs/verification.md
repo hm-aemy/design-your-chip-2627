@@ -23,7 +23,7 @@ LibreLane and its physical-design tools are provided through Nix.
 Activate the LibreLane development environment:
 
 ```bash
-nix develop path:/opt/librelane
+nix develop librelane/
 ```
 
 Once inside the Nix development shell, execute:
@@ -31,6 +31,7 @@ Once inside the Nix development shell, execute:
 ```bash
 librelane --smoke-test
 ```
+> **Note:** Some warnings may appear at the end of the smoke test. These are expected and can be safely ignored, as long as the smoke test completes successfully.
 
 The smoke test checks that the LibreLane environment is working correctly.
 
