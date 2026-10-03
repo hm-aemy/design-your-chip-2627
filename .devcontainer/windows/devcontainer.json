@@ -8,6 +8,8 @@
   "updateRemoteUserUID": true,
   "overrideCommand": false,
 
+  "postCreateCommand": "git submodule update --init --recursive",
+
   "containerEnv": {
     "DISPLAY": "${localEnv:DISPLAY}",
     "QT_X11_NO_MITSHM": "1",
