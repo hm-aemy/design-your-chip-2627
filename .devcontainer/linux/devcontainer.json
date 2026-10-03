@@ -1,5 +1,5 @@
 {
-	"name": "Design your Chip 2027",
+	"name": "Design your Chip 2027 - Linux",
     "image": "ghcr.io/hm-aemy/librelane-base-image:latest",
 
     "remoteUser": "ubuntu",
