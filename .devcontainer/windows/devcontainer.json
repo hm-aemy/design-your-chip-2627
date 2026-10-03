@@ -1,7 +1,7 @@
 {
   "name": "Design Your Chip 2027 - Windows",
 
-  "image": "dyc-nix-test",
+  "image": "ghcr.io/hm-aemy/librelane-base-image:latest",
 
   "remoteUser": "ubuntu",
   "containerUser": "root",
