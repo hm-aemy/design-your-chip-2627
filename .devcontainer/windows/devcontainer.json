@@ -1,0 +1,20 @@
+{
+  "name": "Design Your Chip 2027 - Windows",
+
+  "image": "dyc-nix-test",
+
+  "remoteUser": "ubuntu",
+  "containerUser": "root",
+  "updateRemoteUserUID": true,
+  "overrideCommand": false,
+
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}",
+    "QT_X11_NO_MITSHM": "1",
+    "QT_QPA_PLATFORM": "xcb"
+  },
+
+  "mounts": [
+    "source=/mnt/wslg/.X11-unix,target=/tmp/.X11-unix,type=bind"
+  ]
+}
