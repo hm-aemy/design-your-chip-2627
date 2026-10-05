@@ -53,6 +53,8 @@ From the regular Dev Container terminal, execute:
 surfer
 ```
 
+> **Note** Surfer is having problems in MacOS, if you are in MacOS please use ```gtkwave``` instead of surfer until we fix the problem c:
+
 The Surfer waveform viewer should open in a graphical window.
 
 Close Surfer after verifying that it works.
