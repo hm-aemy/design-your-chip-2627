@@ -4,7 +4,7 @@ This guide provides solutions to common issues you may encounter while setting u
 
 ## Need Help? Open an Issue!
 
-If your question or problem is not covered in this guide, please don't hesitate to [open an issue](https://github.com/hm-aemy/design-your-chip-2627/issues) in this repository.
+If your question or problem is not covered in this guide, please don't hesitate to [open an issue](https://gitlab.lrz.de/design-your-chip-2027/design-your-chip-environment/-/work_items?sort=created_date&state=opened&first_page_size=20) in this repository.
 
 When reporting an issue, please describe the problem, your operating system, the steps to reproduce it, and any relevant error messages.
 
