@@ -64,7 +64,7 @@ Close Surfer after verifying that it works.
 Activate the LibreLane environment:
 
 ```bash
-nix develop path:/opt/librelane
+nix develop librelane/
 ```
 
 Then launch OpenROAD:
