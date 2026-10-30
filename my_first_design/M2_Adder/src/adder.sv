@@ -1,9 +1,10 @@
 module adder(
-    input clk,
-    input [3:0] operand,
-    input save_A,
-    input save_B,
-    output [4:0] result
+    input logic clk,
+    input logic rst_n,
+    input logic [3:0] operand,
+    input logic save_A,
+    input logic save_B,
+    output logic [4:0] result
 );
 
 
