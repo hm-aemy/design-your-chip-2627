@@ -77,7 +77,9 @@ synth: $(JSON)
 $(JSON): $(SOURCES) | $(BUILD_DIR)
 	$(YOSYS) -p "\
 		read_verilog -sv $(SOURCES); \
+		show -format png -prefix $(BUILD_DIR)\diagram_before_synth $(TOP); \
 		synth_xilinx -flatten -abc9 -arch xc7 -top $(TOP); \
+		show -format png -prefix $(BUILD_DIR)\diagram_after_synth $(TOP); \
 		write_json $@"
 
 # ------------------------------------------------------------
