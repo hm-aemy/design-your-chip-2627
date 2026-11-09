@@ -31,14 +31,17 @@ CHIPDB    ?= /opt/openxc7/chipdb/xc7a100tcsg324.bin
 
 # Build directory
 BUILD_DIR ?= build
+SYNTH_DIR ?= $(BUILD_DIR)/synth
+PNR_DIR ?= $(BUILD_DIR)/pnr
+BITSTREAM_DIR ?= $(BUILD_DIR)/bitstream
 
 # ------------------------------------------------------------
 # Output files
 # ------------------------------------------------------------
 
-JSON = $(BUILD_DIR)/$(TOP).json
-FASM = $(BUILD_DIR)/$(TOP).fasm
-BIT  = $(BUILD_DIR)/$(TOP).bit
+JSON = $(SYNTH_DIR)/$(TOP).json
+FASM = $(PNR_DIR)/$(TOP).fasm
+BIT  = $(BITSTREAM_DIR)/$(TOP).bit
 
 # ------------------------------------------------------------
 # Tools
@@ -67,6 +70,9 @@ all: bitstream
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
+	mkdir -p $(SYNTH_DIR)
+	mkdir -p $(PNR_DIR)
+	mkdir -p $(BITSTREAM_DIR)
 
 # ------------------------------------------------------------
 # Synthesis: RTL -> JSON
@@ -77,10 +83,14 @@ synth: $(JSON)
 $(JSON): $(SOURCES) | $(BUILD_DIR)
 	$(YOSYS) -p "\
 		read_verilog -sv $(SOURCES); \
-		show -format png -prefix $(BUILD_DIR)\diagram_before_synth $(TOP); \
+		show -format png -prefix $(SYNTH_DIR)/diagram_before_synth $(TOP); \
 		synth_xilinx -flatten -abc9 -arch xc7 -top $(TOP); \
-		show -format png -prefix $(BUILD_DIR)\diagram_after_synth $(TOP); \
+		tee -o $(SYNTH_DIR)/stat.rpt stat; \
+		show -format png -prefix $(SYNTH_DIR)/diagram_after_synth $(TOP); \
+		write_verilog -noattr -noexpr $(SYNTH_DIR)/$(TOP).nl.v; \
 		write_json $@"
+	rm -f $(SYNTH_DIR)/diagram_before_synth.dot
+	rm -f $(SYNTH_DIR)/diagram_after_synth.dot
 
 # ------------------------------------------------------------
 # Place & Route: JSON -> FASM
@@ -92,8 +102,10 @@ $(FASM): $(JSON) $(XDC) $(CHIPDB)
 	$(NEXTPNR) \
 		--chipdb $(CHIPDB) \
 		--xdc $(XDC) \
+		--report $(PNR_DIR)/pnr.json \
 		--json $(JSON) \
 		--fasm $@
+	python3 -c 'import json,sys; p=sys.argv[1]; d=json.load(open(p)); json.dump(d,open(p,"w"),indent=2)' $(PNR_DIR)/pnr.json
 
 # ------------------------------------------------------------
 # Bitstream generation: FASM -> BIT
