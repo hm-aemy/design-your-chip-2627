@@ -1,0 +1,5 @@
+# On-board LED
+set_io led B6
+
+# On-board 12MHz clock
+set_io clk D1
