@@ -1,0 +1,11 @@
+# On-board LED
+set_io led B6
+
+# On-board 12MHz clock
+set_io clk D1
+
+# UART RX pin (connected to iCELink USB CDC)
+set_io rx A3
+
+# UART TX pin (loopback - connected to iCELink USB CDC)
+set_io tx B3
